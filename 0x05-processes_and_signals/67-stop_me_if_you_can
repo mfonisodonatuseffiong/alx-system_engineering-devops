@@ -3,4 +3,3 @@
 # This script kills 4-to_infinity_and_beyond without kill or killall
 pkill -f beyond
 
-
