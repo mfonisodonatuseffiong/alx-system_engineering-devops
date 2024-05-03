@@ -1,6 +1,4 @@
-
 #!/usr/bin/env bash
-# Displays the shell's PID.
+# Displays its own PID.
 
 echo $$
-
