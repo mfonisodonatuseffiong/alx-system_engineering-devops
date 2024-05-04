@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
-# This script is used to kill the 7-highlander process
+# Kills the process 7-highlander.
 
-kill -9 "$(pgrep -f 7-highlander)"
+pkill -f -SIGKILL 7-highlander
 
