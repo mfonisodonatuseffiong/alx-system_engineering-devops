@@ -1,7 +1,6 @@
 
 #!/usr/bin/env bash
-# This script is used to kill the 4-to_infinity_and_beyond process
-# kill must be used
+# Kills the 4-to_infinity_and_beyond process
 
 kill "$(pgrep -f 4-to_infinity_and_beyond)"
 
