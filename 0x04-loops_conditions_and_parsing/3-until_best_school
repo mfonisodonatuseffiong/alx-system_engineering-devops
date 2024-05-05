@@ -1,12 +1,14 @@
 
 #!/usr/bin/env bash
-# print "Best School" * 10
-
-i=1
-
-until [ $i -gt 10 ]
+# This script is displaying "Best School" 10 times
+a=$"Best"
+b=$"School"
+i=0
+until [ ! $i -lt 10 ]
 do
-	echo "Best School"
-	i=$(( 1+i ))
+    printf "%s " $a
+    printf "%s" $b
+    printf "\n"
+    i=$(( i+1 ))
 done
 
