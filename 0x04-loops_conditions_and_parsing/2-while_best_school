@@ -1,14 +1,10 @@
 
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times
-a=$"Best"
-b=$"School"
+#Prints "Best School" 10 times using a while loop
 i=0
-while [ $i -le 9 ]
+while [ $i -lt 10 ]
 do
-    printf "%s " $a
-    printf "%s" $b
-    printf "\n"
-    i=$(( i+1 ))
+    echo "Best School"
+    i=$((i+1))
 done
 
