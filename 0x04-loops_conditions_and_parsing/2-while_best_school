@@ -1,11 +1,11 @@
 
 #!/usr/bin/env bash
-# prints a string 10 times using while loop 
+# Displays 'Best School' in stdout 10 times using a while loop
 
-i=0
-
-while [ "$i" -lt 10 ]; do
-  echo "Best School"
-  ((i++))
+n=0
+while ((n < 10))
+do
+    echo "Best School"
+    n=$((n+1))
 done
 
