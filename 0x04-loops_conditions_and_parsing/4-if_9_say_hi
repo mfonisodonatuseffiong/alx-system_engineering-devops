@@ -1,19 +1,16 @@
 
 #!/usr/bin/env bash
-# print "Best School" * 10
+# Displays 'Best School'. Displays Hi on the 9th iteration
 
-i=1
+index=0
 
-while [ $i -le 10 ]
+while [ $index -lt 10 ]
 do
-	if [ $i -eq 9 ] 
-	then
-	        echo "Best School"
-        	echo "Hi"
-	else
-		echo "Best School"
-	fi
-	i=$(( 1+i ))
-
+  if [ $index -eq 9 ]
+  then
+    echo "Hi"
+  fi
+  echo "Best School"
+  (( index++ ))
 done
 
