@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#print 0 to 12 Hour
+H=0
+
+while [ $H -le 12 ]
+do
+	echo "Hour: $H"
+	M=1
+	while [ $M -le 59 ]
+	do
+		echo "$M"
+		M=$(( M+1 ))
+	done
+	H=$(( H+1 ))
+done
