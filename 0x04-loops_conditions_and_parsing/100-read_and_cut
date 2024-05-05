@@ -1,10 +1,9 @@
 
-ys the content of the file /etc/passwd.
+#!/usr/bin/env bash
+# Displays the contents of the file `/etc/passwd`.
+#   Only displays the username, user id, and user home directory path.
 
-var=$(cat /etc/passwd)
-
-while IFS=: read -r -a arr; 
-	do
-    	echo "${arr[0]}:${arr[2]}:${arr[6]}"
-	done <<< "$var"
+while read -r passwd; do
+  echo "$passwd" | cut -d ':' -f1,3,6
+done < "/etc/passwd"
 
