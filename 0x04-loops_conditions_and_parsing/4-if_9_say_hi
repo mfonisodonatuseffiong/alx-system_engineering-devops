@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# print same string 10 times except 1 iteration with different string
+#print same string 10 times except 1 iteration with different string
 
 i=0
 while [ $i -lt 10 ]; do
