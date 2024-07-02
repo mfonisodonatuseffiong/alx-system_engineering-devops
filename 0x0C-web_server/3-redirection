@@ -1,11 +1,21 @@
 #!/usr/bin/env bash
-# Script that configures a new Ubuntu machine to respect above requirements
+# Script that configures a new Ubuntu machine to respect the requirements:
+# 1. Install nginx web server
+# 2. Serve a page with "Hello World!" content at the root
+# 3. Redirect /redirect_me to a specific URL
 
+# Update the package list
 sudo apt-get update
+
+# Install nginx
 sudo apt-get install -y nginx
 
+# Create the index.html file with "Hello World!" content
 echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Add redirection in the nginx default server block
 string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.blog.ehoneahobed.com permanent;"
 sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
+# Restart nginx to apply the changes
 sudo service nginx restart
