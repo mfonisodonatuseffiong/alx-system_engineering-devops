@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
-# install nginx web server and create html pages
+# Install Nginx web server and create an HTML page
+
+# Update package list
 apt-get -y update
+
+# Install Nginx
 apt-get install -y nginx
-echo "hello world" | sudo tee /usr/share/nginx/html/index.html
+
+# Create an HTML page with "Hello World!"
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Restart Nginx without using systemctl
 service nginx restart
