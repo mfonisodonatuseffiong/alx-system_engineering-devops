@@ -1,37 +1,15 @@
 #!/usr/bin/env bash
-# Script to configure a new Ubuntu machine to respect the requirements:
-# 1. Install nginx web server
-# 2. Serve a page with "Hello World!" content at the root
-# 3. Redirect /redirect_me to a specific URL with a 301 status
+# Script that configures a new Ubuntu machine to respect the above requirements
 
-# Update the package list
+# Update package list and install nginx
 sudo apt-get update
-
-# Install nginx
 sudo apt-get install -y nginx
 
 # Create the index.html file with "Hello World!" content
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Add server block configuration for Nginx
-sudo tee /etc/nginx/sites-available/default <<EOL
-server {
-    listen 80;
-
-    location / {
-        root /var/www/html;
-        index index.html;
-    }
-
-    location /.well-known/acme-challenge/ {
-        root /var/www/html;
-    }
-
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-}
-EOL
+# Add redirection in the nginx default server block
+sudo sed -i '/server_name _;/a\\n    location /redirect_me {\n        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n    }' /etc/nginx/sites-enabled/default
 
 # Restart nginx to apply the changes
 sudo service nginx restart
