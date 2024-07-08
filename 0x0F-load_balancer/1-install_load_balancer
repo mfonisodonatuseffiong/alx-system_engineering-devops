@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Create a script to install and configure HAProxy on lb-01 server
+# Configure HAProxy to send traffic to web-01 and web-02 servers
+# Distribute requests using a roundrobin algorithm
+# Make sure that HAProxy can be managed via an init script
+
+# Update package list and install HAProxy
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+
+# Create a temporary file for the HAProxy configuration
+temp_config=$(mktemp)
+
+# Define the HAProxy configuration
+cat <<EOL | sudo tee $temp_config
+frontend donatech-frontend
+    bind *:80
+    mode http
+    default_backend donatech-backend
+
+backend donatech-backend
+    balance roundrobin
+    server web-01 18.209.152.5 check
+    server web-02 100.25.46.59 check
+EOL
+
+# Backup the existing HAProxy configuration
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
+
+# Append the new configuration to the HAProxy configuration file
+sudo cat $temp_config >> /etc/haproxy/haproxy.cfg
+
+# Enable HAProxy to be started by an init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+# Restart HAProxy to apply the changes
+sudo service haproxy restart
+
+# Clean up the temporary file
+rm $temp_config
