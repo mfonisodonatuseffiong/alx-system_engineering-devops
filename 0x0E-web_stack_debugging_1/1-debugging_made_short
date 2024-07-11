@@ -1,4 +1,22 @@
 #!/usr/bin/env bash
-# Open the 80 port
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-pkill -1 nginx
+# This script configures Nginx to listen on port 80
+
+# Update package lists and install Nginx if not installed
+sudo apt-get update -y
+sudo apt-get install -y nginx
+
+# Ensure Nginx configuration file exists before modifying
+if [ -f /etc/nginx/sites-enabled/default ]; then
+  # Open the 80 port by modifying the configuration file
+  sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+  
+  # Reload Nginx service to apply changes
+  sudo systemctl reload nginx
+else
+  echo "Nginx configuration file not found. Exiting."
+  exit 1
+fi
+
+# Allow Nginx through the firewall
+sudo ufw allow 'Nginx Full'
+sudo ufw reload
