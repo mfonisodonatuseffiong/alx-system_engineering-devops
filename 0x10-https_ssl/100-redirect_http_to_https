@@ -39,5 +39,5 @@ frontend donatech.tech-https
 backend donatech.tech_backend
         balance  roundrobin
         redirect scheme https code 301 if !{ ssl_fc }
-        server 218560-web-01 54.87.224.2:80 check
-        server 218560-web-02 54.89.109.20:80 check
+        server 218560-web-01 18.209.152.5:80 check
+        server 218560-web-02 100.25.46.59:80 check
