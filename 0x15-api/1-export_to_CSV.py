@@ -16,10 +16,10 @@ if __name__ == "__main__":
         if param:
             url += ('?' + param[0] + '=' + param[1])
 
-        # make request
+        # Make request
         r = requests.get(url)
 
-        # extract json response
+        # Extract JSON response
         r = r.json()
         return r
 
@@ -34,6 +34,7 @@ if __name__ == "__main__":
                             quoting=csv.QUOTE_ALL)
         for task in tasks:
             writer.writerow([user['id'],
-                            user['username'],
-                            task['completed'],
-                            task['title']])
+                             user['username'],
+                             task['completed'],
+                             task['title']])
+
