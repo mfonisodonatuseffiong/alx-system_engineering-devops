@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Python to get data from an API and convert to Json"""
+""" Python to get data from an API and convert to JSON"""
+
 import csv
 import json
 import requests
@@ -28,3 +29,4 @@ if __name__ == '__main__':
     """print(dict_data)"""
     with open('{}.json'.format(USER_ID), 'w') as f:
         json.dump(dict_data, f)
+
