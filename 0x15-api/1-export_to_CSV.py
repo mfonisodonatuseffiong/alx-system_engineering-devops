@@ -37,4 +37,3 @@ if __name__ == "__main__":
                              user['username'],
                              task['completed'],
                              task['title']])
-
