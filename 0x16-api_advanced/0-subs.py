@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-"""Module for task 0"""
+"""
+This module provides a function to query the Reddit API for
+the number of subscribers of a given subreddit.
+"""
 
 import requests
+
 
 def number_of_subscribers(subreddit):
     """Queries the Reddit API and returns the number of subscribers
