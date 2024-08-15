@@ -1,0 +1,89 @@
+[34m
+* Datadog Agent 7 install script v1.33.0
+[0m
+[34m
+* Installing apt-transport-https, curl and gnupg
+[0m
+Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Ign:3 https://apt.datadoghq.com stable InRelease
+Hit:4 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease
+Hit:5 https://deb.nodesource.com/node_14.x jammy InRelease
+Get:6 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:7 https://apt.datadoghq.com stable Release [26.0 kB]
+Hit:8 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Get:9 https://apt.datadoghq.com stable Release.gpg [801 B]
+Get:10 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1727 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1947 kB]
+Get:12 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [286 kB]
+Get:13 https://apt.datadoghq.com stable/7 amd64 Packages [78.4 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [345 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 c-n-f Metadata [17.8 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [401 kB]
+Get:17 http://security.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [13.1 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1111 kB]
+Get:19 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [890 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [259 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [25.9 kB]
+Get:22 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [175 kB]
+Get:23 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [19.0 kB]
+Fetched 7578 kB in 1min 41s (75.1 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (7.81.0-1ubuntu1.17).
+curl set to manually installed.
+gnupg is already the newest version (2.2.27-3ubuntu2.1).
+apt-transport-https is already the newest version (2.4.12).
+The following packages were automatically installed and are no longer required:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libclone-perl libencode-locale-perl
+  libevent-pthreads-2.1-7 libfcgi-bin libfcgi-perl libfcgi0ldbl
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl
+  libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmariadb3 libmecab2 libprotobuf-lite23
+  libtimedate-perl liburi-perl mariadb-common mecab-ipadic mecab-ipadic-utf8
+  mecab-utils mysql-server-8.0 mysql-server-core-8.0
+Use 'apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 38 not upgraded.
+[34m
+* Installing APT package sources for Datadog
+[0m
+gpg: key E6266D4AC0962C7D: "Datadog, Inc. APT key (2023-04-20) (APT key) <package+aptkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg: key 0D826EB906462314: "Datadog, Inc. APT key (2024-05-15) (APT key) <package+aptkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg: key E6266D4AC0962C7D: "Datadog, Inc. APT key (2023-04-20) (APT key) <package+aptkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg: key 32637D44F14F620E: "Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg: key D3A80E30382E94DE: "Datadog, Inc <package@datadoghq.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+Ign:1 https://apt.datadoghq.com stable InRelease
+Hit:2 https://apt.datadoghq.com stable Release
+Reading package lists...
+  [33mInstalling package(s): datadog-agent datadog-signing-keys
+[0m
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libclone-perl libencode-locale-perl
+  libevent-pthreads-2.1-7 libfcgi-bin libfcgi-perl libfcgi0ldbl
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl
+  libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmariadb3 libmecab2 libprotobuf-lite23
+  libtimedate-perl liburi-perl mariadb-common mecab-ipadic mecab-ipadic-utf8
+  mecab-utils mysql-server-8.0 mysql-server-core-8.0
+Use 'apt autoremove' to remove them.
+The following NEW packages will be installed:
+  datadog-agent datadog-signing-keys
+0 upgraded, 2 newly installed, 0 to remove and 38 not upgraded.
+Need to get 273 MB of archives.
+After this operation, 1265 MB of additional disk space will be used.
+Get:1 https://apt.datadoghq.com stable/7 amd64 datadog-agent amd64 1:7.55.3-1 [273 MB]
