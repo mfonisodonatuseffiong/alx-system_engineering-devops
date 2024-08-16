@@ -2,15 +2,25 @@
 """
 Function to count words in all hot posts of a given Reddit subreddit.
 """
+
 import requests
 
 
-def count_words(subreddit, word_list, after=None, counts={}):
+def count_words(subreddit, word_list, after=None, counts=None):
     """
     Recursive function that queries the Reddit API, parses the title of all
-        hot articles, and prints a sorted count of given keywords
+    hot articles, and prints a sorted count of given keywords.
+
+    Args:
+        subreddit (str): The name of the subreddit.
+        word_list (list): List of keywords to count in post titles.
+    after (str, optional): Pagination token to retrieve the next set of posts.
+        counts (dict, optional): Dictionary to store the count of each keyword.
     """
-    if not word_list or word_list == [] or not subreddit:
+    if counts is None:
+        counts = {}
+
+    if not word_list or not subreddit:
         return
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
@@ -20,9 +30,7 @@ def count_words(subreddit, word_list, after=None, counts={}):
     if after:
         params["after"] = after
 
-    response = requests.get(url,
-                            headers=headers,
-                            params=params,
+    response = requests.get(url, headers=headers, params=params,
                             allow_redirects=False)
 
     if response.status_code != 200:
@@ -34,8 +42,9 @@ def count_words(subreddit, word_list, after=None, counts={}):
     for post in children:
         title = post["data"]["title"].lower()
         for word in word_list:
-            if word.lower() in title:
-                counts[word] = counts.get(word, 0) + title.count(word.lower())
+            word_lower = word.lower()
+            if word_lower in title:
+                counts[word] = counts.get(word, 0) + title.count(word_lower)
 
     after = data["data"]["after"]
     if after:
