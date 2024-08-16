@@ -1,14 +1,31 @@
 #!/usr/bin/python3
 """
-Script to print hot posts on a given Reddit subreddit.
+A script to print the titles of the top 10 hottest posts from a specified
+Reddit subreddit.
+
+Usage:
+    top_ten(subreddit)
+
+Arguments:
+    subreddit (str): The name of the subreddit to query.
+
+Description:
+    This script uses the Reddit API to fetch and print the titles of the
+    top 10 hottest posts from a given subreddit. It handles the case where
+    the subreddit might not exist by printing "None".
 """
 
 import requests
 
 
 def top_ten(subreddit):
-    """Print the titles of the 10 hottest posts on a given subreddit."""
+    """
+    Print the titles of the top 10 hottest posts on a given subreddit.
 
+    Args:subreddit (str): The name of the subreddit to query.Prints:
+        The titles of the top 10 hottest posts. Prints "None" if the subreddit
+        does not exist.
+    """
     # Construct the URL for the subreddit's hot posts in JSON format
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
 
@@ -35,5 +52,4 @@ def top_ten(subreddit):
     results = response.json().get("data")
 
     # Print the titles of the top 10 hottest posts
-    for post in results.get("children"):
-        print(post.get("data").get("title"))
+    [print(c.get("data").get("title")) for c in results.get("children")]
