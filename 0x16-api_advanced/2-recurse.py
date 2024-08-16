@@ -6,7 +6,7 @@ Script to query a list of all hot posts on a given Reddit subreddit.
 import requests
 
 
-def recurse(subreddit, hot_list=[], after="", count=0):
+def recurse(subreddit, hot_list=None, after="", count=0):
     """
     Recursively retrieves a list of titles of all hot posts
     on a given subreddit.
@@ -22,6 +22,9 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     Returns:
         list: A list of post titles from the hot section of the subreddit.
     """
+    if hot_list is None:
+        hot_list = []
+
     # Construct the URL for the subreddit's hot posts in JSON format
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
 
@@ -44,6 +47,7 @@ def recurse(subreddit, hot_list=[], after="", count=0):
     # Check if the response status code indicates a not-found error (404)
     if response.status_code == 404:
         return None
+
     # Parse the JSON response and extract relevant data
     results = response.json().get("data")
     after = results.get("after")
